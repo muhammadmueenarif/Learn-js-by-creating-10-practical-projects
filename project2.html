@@ -6,16 +6,107 @@
     <title>Password Strength Checker</title>
     
     <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(99, 51, 99);
+}
+
+.box {
+    width: 20%;
+    height: 4vh;
+    background-color: rgb(99, 51, 99);    border-radius: 5px;
+    padding: 10px;
+    border: 2px solid white;
+}
+
+input {
+    width: 88%;
+    height: 3vh;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: rgb(99, 51, 99);    
+    border: none;
+    outline: none;
+    border: none;
+    color: white;
+}
+
+/*give white color to placeholder*/
+input::placeholder {
+    color: white;
+}
+
+button {
+    width: 20%;
+    height: 3vh;
+    background-color: rgb(99, 51, 99);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+i {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.output {
+    font-family: monospace;
+    color: white;
+    margin-top: 7px;
+}
+
 
     </style>
     
 </head>
 
 <body>
-    
+    <div class="box"></div>
+        <input id="input" type="password" placeholder="Enter your Password">
+        <i class="fa fa-arrow-right"></i>
+    </div>
+
+    <div class="output">
+        <p id="passwordOutput"></p>
+    </div>
 
 <script>
 
+var numbersPattern = /[0-9]/;
+var specialCharactersPattern = /[~`!@#$%^&*()_+=\[\]{}; :|<>,.?\/]/;
+var lowercaseLettersPattern = /[a-z]/;
+var uppercaseLettersPattern = /[A-Z]/;
+
+document.getElementById('input').addEventListener('keyup', ()=>{
+    checkPassword();
+});
+
+function checkPassword() {
+    var userInput = document.getElementById('input').value;
+    // console.log(`userinput is ${userInput}`);
+    
+    if(userInput === '') {
+        document.getElementById('passwordOutput').innerText = 'Password cannot be empty';
+    } 
+    else if (numbersPattern.test(userInput) && specialCharactersPattern.test(userInput) && lowercaseLettersPattern.test(userInput) && uppercaseLettersPattern.test(userInput)) {
+        document.getElementById('passwordOutput').innerText = 'Strong Password';
+    } else {
+        document.getElementById('passwordOutput').innerText = 'Weak Password';
+    }
+}
 </script>
 
 </body>

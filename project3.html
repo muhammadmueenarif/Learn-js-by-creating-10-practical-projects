@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowel Counters</title>
+    <link rel="stylesheet" href="style.css">
+
+<style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.container {
+    width: 30%;
+    height: 50vh;
+    background-color: goldenrod;
+    box-shadow: 2px 2px #131313;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+}
+
+h2 {
+    margin-top: 10%;
+}
+
+textarea {
+    width: 50%;
+    height: 15vh;
+    padding: 5px;
+    margin-top: 5%;
+}
+
+button {
+    margin-top: 5%;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+p {
+    margin-top: 5%;
+    font-size: 16px;
+}
+    </style>
+
+</head>
+
+<body>
+   
+    <div class="container">
+        <h2>Vowel Counter</h2>
+        <textarea id="input"></textarea>
+        <button id="count-vowels" onclick="checkVowel()">Count Vowels</button>
+        <p id="output">Total Vowels =</p>
+    </div>
+
+
+    <script>
+        /*The function then iterates over each character in the user input using for loop.
+Inside loop, character is converted to lowercase using char = userInput[i].toLowerCase(). 
+This ensures that function can correctly count vowels regardless of their case.
+The function checks if the lowercase character is included in the vowels array using vowels.includes(char). 
+If it is, the count variable is incremented by 1.
+ */
+function checkVowel() {
+    var userInput = document.getElementById('input').value;
+    var vowels = ['a', 'e', 'i', 'o', 'u'];
+    var count = 0;
+
+    for (var i = 0; i < userInput.length; i++) {
+        var char = userInput[i].toLowerCase();
+        if (vowels.includes(char)) {
+            count++;
+        }
+    }
+    document.getElementById('output').innerHTML = 'Total vowels = ' + count;
+}
+
+
+    </script>  
+
+</body>
+</html>

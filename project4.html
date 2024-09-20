@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEX Color Generator</title>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(238, 230, 216);
+}
+
+.container {
+    width: 25%;
+    height: 40vh;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+h2 {
+    margin-top: 6%;
+}
+
+.color-box {
+    width: 50%;
+    height: 50%;
+    background-color: #ff0000; /* Replace with desired color */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
+}
+
+button {
+    margin-top: 3%;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+    </style>
+
+</head>
+<body>
+
+    <div class="container">
+
+        <h2>HEX Color Generator</h2>
+        <div class="color-box">
+            <p id="hex-color">#000000</p>
+        </div>
+        <button id="generate-color" onclick="generateColor()">Generate Color</button>
+        
+    </div>
+
+    <script>
+
+        /* function generateColor() {
+            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.getElementById("hex-color").textContent = randomColor;
+            document.querySelector('.color-box').style.backgroundColor = randomColor;
+        }
+
+        generateColor(); // Call the function to generate a random color initially.
+        */
+    </script>  
+
+
+</body>
+</html>

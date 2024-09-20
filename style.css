@@ -3,52 +3,51 @@
     padding: 0;
 }
 
-body{
+body {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
+    background-color: rgb(238, 230, 216);
 }
 
 .container {
-    width: 30%;
-    height: 50vh;
-    background-color: goldenrod;
-    box-shadow: 2px 2px #131313;
+    width: 25%;
+    height: 40vh;
+    background-color: white;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    /* justify-content: center; */
     align-items: center;
-    border-radius: 8px;
 }
 
 h2 {
-    margin-top: 10%;
+    margin-top: 6%;
 }
 
-textarea {
+.color-box {
     width: 50%;
-    height: 15vh;
-    padding: 5px;
-    margin-top: 5%;
+    height: 50%;
+    background-color: #ff0000; /* Replace with desired color */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3%;
 }
 
 button {
-    margin-top: 5%;
+    margin-top: 3%;
     padding: 10px 20px;
     background-color: #333;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-weight: bold;
 }
 
 button:hover {
-    background-color: blue;
-}
-
-p {
-    margin-top: 5%;
-    font-size: 16px;
+    background-color: #555;
 }

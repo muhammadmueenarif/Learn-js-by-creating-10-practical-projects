@@ -1,4 +1,83 @@
-/*
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Piano</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(197, 250, 232);
+}
+
+h2 {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.keys {
+    display: flex;
+}
+
+button {
+    width: 5%;
+    height: 40vh;
+    margin-top: 5%;
+    margin-left: 1%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.keys {
+    margin-left: 20%;
+}
+
+.key-white {
+    background-color: white;
+}
+
+.key-black {
+    background-color: black;
+    color: white;
+}
+    </style>
+
+</head>
+
+<body>
+
+    <h2>Piano App</h2>
+
+    <div class="keys">
+        <button id="btn1" class="key-white">C</button>
+        <button id="btn2" class="key-black">C#</button>
+        <button id="btn3" class="key-white">D</button>
+        <button id="btn4" class="key-black">D#</button>
+        <button id="btn5" class="key-white">E</button>
+        <button id="btn6" class="key-white">F</button>
+        <button id="btn7" class="key-black">F#</button>
+        <button id="btn8" class="key-white">G</button>
+        <button id="btn9" class="key-black">G#</button>
+        <button id="btn10" class="key-white">A</button>
+        <button id="btn11" class="key-black">A#</button>
+        <button id="btn12" class="key-white">B</button>
+        <button id="btn13" class="key-white">C2</button>
+    </div>
+
+
+    <script>
+        /*
 This code is an event listener for button with id 'btn1'. When it is clicked, it triggers function that creates 
 new instance of Audio object with source set to 'sounds/C.mp3'. The play() method is then called on
 sound1 object, which starts playing the audio file. */
@@ -123,3 +202,9 @@ amount of code and makes it easier to maintain and update the audio playback fun
   // ...
 }
   */
+
+    </script>
+
+</body>
+
+</html>

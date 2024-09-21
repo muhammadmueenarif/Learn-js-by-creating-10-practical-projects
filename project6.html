@@ -1,4 +1,78 @@
-const paragraphs = [
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Background Color Changer on Click</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to left, rgb(238, 170, 43), rgb(80, 80, 214));
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 35%;
+    height: 30vh;
+    background: rgba(255, 255, 255);
+    border-radius: 7px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 15px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+input {
+    width: 10%;
+    padding: 4px;
+    border-radius: 5px;
+    border: 2px solid rgb(238, 170, 43);
+    outline: none;
+}
+
+button {
+    width: 18%;
+    padding: 8px 8px;
+    border-radius: 5px;
+    background: rgb(238, 170, 43);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(204, 140, 0);
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2><u>Random Paragraph Generator</u></h2>
+        <input type="number" value="0">
+        <button id="paragraphGenerator" onclick="generateParagraph()">Generate</button>
+    </div>
+
+
+    <script>
+        const paragraphs = [
   "JavaScript is a high-level, interpreted programming language that is primarily used for building interactive and dynamic web pages. It runs on the client side, meaning it is executed on the user's web browser.",
   "One of the key features of JavaScript is its ability to manipulate and modify the content of web pages in real-time. This enables developers to create engaging user experiences by dynamically updating the page without requiring a full refresh.",
   "JavaScript is often used alongside HTML and CSS to create modern, interactive websites. HTML provides the structure, CSS handles the styling, and JavaScript handles the behavior and functionality.",
@@ -34,3 +108,9 @@ function generateParagraph() {
     }
   }
 }
+
+    </script>
+
+</body>
+
+</html>

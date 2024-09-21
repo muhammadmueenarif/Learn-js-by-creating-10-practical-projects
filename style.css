@@ -38,6 +38,11 @@ h2 {
     margin-top: 3%;
 }
 
+p {
+    font-weight: bold;
+    font-size: 18px;
+}
+
 button {
     margin-top: 3%;
     padding: 10px 20px;

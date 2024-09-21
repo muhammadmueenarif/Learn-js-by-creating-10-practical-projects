@@ -76,14 +76,17 @@ button:hover {
 
     <script>
 
-        /* function generateColor() {
-            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-            document.getElementById("hex-color").textContent = randomColor;
-            document.querySelector('.color-box').style.backgroundColor = randomColor;
-        }
-
-        generateColor(); // Call the function to generate a random color initially.
-        */
+function generateColor() {
+    
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+        document.getElementsByClassName('color-box')[0].style.backgroundColor = color;
+        document.getElementById('hex-color-code').innerHTML = color;
+    }
+    return color;
+}
     </script>  
 
 

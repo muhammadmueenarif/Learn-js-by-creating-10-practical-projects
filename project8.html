@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+}
+
+body{
+    background: linear-gradient(to right, #aa7e66,#feb47b);
+}
+
+.container{
+    width: 600px;
+    margin: 100px auto;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h1{
+    text-align: center;
+    color: #333;
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 600;
+}
+
+input[type="text"]{
+    width: 95%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+button{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #aa7e66;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.result-container{
+    display: none;
+    margin-top: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.result{
+    margin-top: 10px;
+}
+
+
+.result h3{
+    color: #333;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.result p{
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <form id="ageCalculator">
+            <div class="form-group">
+                <label for="birthdate">Enter your birthdate:</label>
+                <input type="text" id="birthdate" placeholder="DD-MM-YYYY" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Calculate Age</button>
+            </div>
+        </form>
+
+        <div class="result-container" id="resultContainer">
+            <div class="result" id="result">
+                <!-- <div class="result-item">
+                    <h3>Weeks Passed:</h3>
+                    <p>ageInWeeks</p>
+                </div>
+                <div class="result-item">
+                    <h3>Weeks Passed:</h3>
+                    <p>ageInWeeks</p>
+                </div>
+                <div class="result-item">
+                    <h3>Weeks Passed:</h3>
+                    <p>ageInWeeks</p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+
+ <script>
+
+function calculateAge(){
+
+  const today = new Date();
+  const birthdateInput = document.getElementById("birthdate").value;
+  const birthdateParts = birthdateInput.split("-");   
+  const birthDay = birthdateParts[0];
+  const birthMonth = birthdateParts[1] - 1; //we have used -1 because js date object has index from 0 to 11. 
+  //it has december on 11. so if we enter november 11, then we will -1 from js date object to make it november.
+  
+  const birthYear = birthdateParts[2];
+ 
+  const birthDate = new Date(birthYear,birthMonth,birthDay);
+
+  // console.log(birthdateInput);
+  // console.log(birthdateParts);
+  // console.log(birthDay);
+  // console.log(birthMonth);
+  // console.log(birthYear);
+
+  //functiion to check whether input date is valid or not. 
+  const isValidDate = (date) =>{
+  return(
+      Object.prototype.toString.call(date) === "[object Date]" && !isNaN(date)  
+  );
+
+  };
+
+  if(!isValidDate(birthDate)){
+  alert("Invalid Date Format: Please Enter a valid date in DD-MM-YYYY format.");
+  return;
+  }
+
+ const ageInMilliseconds = today - birthDate;     
+ const ageInseconds = Math.floor(ageInMilliseconds/1000);
+ const ageInMinutes = Math.floor(ageInseconds/60);
+ const ageInHours= Math.floor(ageInMinutes/60);
+ const ageInDays= Math.floor(ageInHours/24);
+ const ageInWeeks= Math.floor(ageInDays/7);
+ const ageInMonths= Math.floor(ageInDays/30.436875); //used 30.43 as some months are of 31 days
+ const ageInYears= Math.floor(ageInDays/365.25); //use 360.25 appoximate as some years are leap
+
+ const resultContainer = document.getElementById("resultContainer");
+ const result = document.getElementById("result");
+
+ result.innerHTML = `
+    <div class="result-item">
+      <h3>Age:</h3>
+      <p>${ageInYears} Years ${ageInMonths % 12} Months ${ageInDays % 30} Days</p>
+    </div>  
+    <div class="result-item">
+      <h3>Months Passed:</h3>
+      <p>${ageInMonths} </p>
+    </div> 
+    <div class="result-item">
+      <h3>Weeks Passed:</h3>
+      <p>${ageInWeeks} </p>
+    </div> 
+    <div class="result-item">
+    <h3>Days Passed:</h3>
+    <p>${ageInDays} </p>
+   </div> 
+   <div class="result-item">
+    <h3>Hours Passed:</h3>
+    <p>${ageInHours} </p>
+   </div>  
+   <div class="result-item">
+    <h3>Minutes Passed:</h3>
+    <p>${ageInMinutes} </p>
+   </div> 
+   <div class="result-item">
+    <h3>Seconds Passed:</h3>
+    <p>${ageInseconds} </p>
+   </div> 
+ `;
+
+
+ resultContainer.style.display = "block";
+
+}
+
+
+
+
+
+
+const ageCalculatorForm = document.getElementById("ageCalculator");
+ageCalculatorForm.addEventListener("submit",(event)=>{
+  event.preventDefault(); //prevent default to prevent saving changes and refreshment each time.
+  calculateAge();
+
+});
+ </script>
+ 
+ 
+</body>
+</html>

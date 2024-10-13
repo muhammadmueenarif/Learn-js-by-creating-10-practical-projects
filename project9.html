@@ -1,11 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Password Generator</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #d4d4d4;
+}
+
+.container{
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 40px 30px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1{
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 36px;
+    text-align: center;
+    color: #333333;
+    text-decoration: underline;
+}
+
+.inputBox{
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.inputBox span{
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    transform: translateY(-50%);
+    color: #333333;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.passBox{
+    width: 100%;
+    height: 40px;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: #f2f2f2;
+    color: #333333;
+    outline: none;
+}
+
+input[type="range"]{
+    width: 100%;
+}
+
+.row{
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+}
+
+.row p{
+    font-weight: 700;
+}
+
+input[type="checkbox"]{
+    margin-right: 8px;
+}
+
+.getBtn{
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #3162cb;
+    cursor: pointer;
+    margin-top: 30px;
+
+}
+
+.getBtn:hover{
+    background-color: #1d1e20;
+}
+
+#sliderValue{
+    margin-right: 7px;
+}
+    </style>
 </head>
+
 <body>
+
+    <div class="container">
+        <h1>Password Generator</h1>
+        <div class="inputBox">
+            <input type="text" class="passBox" id="passBox" disabled>
+            <span class="material-icons" id="copyIcon">
+                content_copy
+            </span>
+        </div>
+
+        <input type="range" min="10" max="30" value="10" id="inputSlider">
+
+        <div class="row">
+            <p>Password Length</p>
+            <span id="sliderValue">10</span>
+        </div>
+
+        <div class="row">
+            <label for="lowercase">Include Lowercase Letters (a-z)</label>
+            <input type="checkbox" name="lowercase" id="lowercase" checked>
+        </div>
+
+        <div class="row">
+            <label for="uppercase">Include Uppercase Letters (A-Z)</label>
+            <input type="checkbox" name="uppercase" id="uppercase" checked>
+        </div>
+
+        <div class="row">
+            <label for="numbers">Include Numbers (0-9)</label>
+            <input type="checkbox" name="numbers" id="numbers" checked>
+        </div>
+
+        <div class="row">
+            <label for="symbols">Include Symbols (@-*)</label>
+            <input type="checkbox" name="symbols" id="symbols">
+        </div>
+
+        <button type="button" class="getBtn" id="getBtn">
+            Generate Password
+        </button>
+
+
+    </div>
+
+    <script src="script.js">
+        const inputSlider = document.getElementById("inputSlider");
+const sliderValue = document.getElementById("sliderValue");
+const passBox = document.getElementById("passBox");
+const lowercaseEl = document.getElementById("lowercase");
+const uppercaseEl = document.getElementById("uppercase");
+const numberEl = document.getElementById("numbers");
+const symbolsEl = document.getElementById("symbols");
+const generateBtn = document.getElementById("getBtn");
+
+const copyIcon = document.getElementById("copyIcon");
+
+const lowercaseLetters = "abcdefghijklmnopqrstuvwxyz";
+const uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const numbers = "0123456789";
+const symbols = "!@#$%^&*()_+-=[]{}\\|;':\",./<>?";
+
+
+sliderValue.textContent = inputSlider.value;
+inputSlider.addEventListener("input",() =>{
+    sliderValue.textContent = inputSlider.value;
+})
+
+
+generateBtn.addEventListener("click",()=>{
+
+    passBox.value = generatePassword();   // call the function
+})
+
+
+
+function generatePassword(){
+
+    const length = inputSlider.value;
+    let characters = "";
+    let password = "";
     
+    characters += lowercaseEl.checked ? lowercaseLetters : "";
+    characters += uppercaseEl.checked ? uppercaseLetters : "";
+    characters += numberEl.checked ? numbers : "";
+    characters += symbolsEl.checked ? symbols : "";
+    console.log(characters);
+
+    for(let i = 0; i < length; i++){
+
+        password += characters.charAt(Math.floor(Math.random()* characters.length));
+        console.log(password);
+    }
+
+    return password
+
+}
+
+
+copyIcon.addEventListener("click",()=>{
+
+    if(passBox.value !="" || passBox.value.length>=10){
+
+        navigator.clipboard.writeText(passBox.value);
+        copyIcon.innerText = "check";
+
+
+        setTimeout(()=>{
+
+            copyIcon.innerHTML = "content_copy";
+
+        },3000);
+
+    }
+});
+    </script>
 </body>
+
 </html>
